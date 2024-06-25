@@ -1,0 +1,62 @@
+[tool.poetry]
+name = "python-strtobool"
+version = "0.1.0"
+description = "`str_to_bool` function for Python"
+authors = ["Sassan Haradji <me@sassanh.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = 'https://github.com/sassanh/python-redux/'
+repository = 'https://github.com/sassanh/python-redux/'
+keywords = ['str_to_bool', 'strtobool', 'str2bool']
+packages = [{ include = "str_to_bool" }]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+pyright = "^1.1.368"
+ruff = "^0.4.10"
+poethepoet = "^0.26.1"
+pytest = "^8.1.1"
+pytest-cov = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+lint = "ruff check . --unsafe-fixes"
+typecheck = "pyright -p pyproject.toml ."
+test = "pytest --cov --cov-report=term-missing --cov-report=html --cov-report=xml"
+sanity = ["typecheck", "lint", "test"]
+
+[tool.ruff]
+lint.select = ['ALL']
+lint.ignore = ['INP001', 'PLR0911', 'D203', 'D213']
+lint.fixable = ['ALL']
+lint.unfixable = []
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "single"
+multiline-quotes = "double"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "PLR0915", "PLR2004"]
+
+[tool.ruff.format]
+quote-style = 'single'
+
+[tool.isort]
+profile = "black"
+
+[tool.pyright]
+exclude = ['typings']
+filterwarnings = 'error'
+
+[tool.pytest.ini_options]
+log_cli = 1
+log_cli_level = 'ERROR'
