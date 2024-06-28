@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.2
+
+- docs: fix usage sample in `README.md`, `from strtobool` -> `from str_to_bool`
+
 ## Version 1.0.1
 
 - docs: fix the github url in pyproject.toml

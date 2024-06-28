@@ -5,7 +5,7 @@ Convert string to boolean value using `str_to_bool` function.
 ## 🛠 Usage
 
 ```python
-from strtobool import str_to_bool
+from str_to_bool import str_to_bool
 
 # Convert string to boolean value
 value = str_to_bool('true')

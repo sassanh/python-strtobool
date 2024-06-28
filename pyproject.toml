@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-strtobool"
-version = "1.0.1"
+version = "1.0.2"
 description = "str_to_bool function for Python"
 authors = ["Sassan Haradji <me@sassanh.com>"]
 license = "Apache-2.0"
