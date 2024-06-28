@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "python-strtobool"
-version = "1.0.0"
+version = "1.0.1"
 description = "str_to_bool function for Python"
 authors = ["Sassan Haradji <me@sassanh.com>"]
 license = "Apache-2.0"
 readme = "README.md"
-homepage = 'https://github.com/sassanh/python-redux/'
-repository = 'https://github.com/sassanh/python-redux/'
+homepage = 'https://github.com/sassanh/python-strtobool/'
+repository = 'https://github.com/sassanh/python-strtobool/'
 keywords = ['str_to_bool', 'strtobool', 'str2bool']
 packages = [{ include = "str_to_bool" }]
 

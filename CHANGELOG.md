@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.1
+
+- docs: fix the github url in pyproject.toml
+
 ## Version 1.0.0
 
 - docs: add `README.md`
