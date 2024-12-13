@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## Version 1.0.3
 
 - chore: migrate to uv and drop required Python version to 3.0 - closes #2
 
