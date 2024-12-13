@@ -1,43 +1,53 @@
-[tool.poetry]
+[project]
 name = "python-strtobool"
-version = "1.0.2"
+dynamic = ["version"]
 description = "str_to_bool function for Python"
-authors = ["Sassan Haradji <me@sassanh.com>"]
-license = "Apache-2.0"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Sassan Haradji", email = "me@sassanh.com" }]
+maintainers = [{ name = "Sassan Haradji", email = "me@sassanh.com" }]
 readme = "README.md"
-homepage = 'https://github.com/sassanh/python-strtobool/'
-repository = 'https://github.com/sassanh/python-strtobool/'
+requires-python = ">=3.0"
 keywords = ['str_to_bool', 'strtobool', 'str2bool']
-packages = [{ include = "str_to_bool" }]
-
-[tool.poetry.dependencies]
-python = "^3.9"
-
-[tool.poetry.group.dev]
-optional = true
-
-[tool.poetry.group.dev.dependencies]
-pyright = "^1.1.368"
-ruff = "^0.4.10"
-poethepoet = "^0.26.1"
-pytest = "^8.1.1"
-pytest-cov = "^4.1.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
 
 [tool.poe.tasks]
-lint = "ruff check . --unsafe-fixes"
-typecheck = "pyright -p pyproject.toml ."
-test = "pytest --cov --cov-report=term-missing --cov-report=html --cov-report=xml"
+lint = "uvx ruff check"
+typecheck = "uvx --with pytest pyright -p pyproject.toml ."
+test = "uvx --with pytest-cov --with . pytest --cov --cov-report=term-missing --cov-report=html --cov-report=xml"
 sanity = ["typecheck", "lint", "test"]
 
+[project.urls]
+homepage = 'https://github.com/sassanh/python-strtobool/'
+repository = 'https://github.com/sassanh/python-strtobool/'
+documentation = 'https://github.com/sassanh/python-strtobool/'
+changelog = 'https://github.com/sassanh/python-strtobool/blob/main/CHANGELOG.md'
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "str_to_bool/_version.py"
+
+[tool.hatch.version.raw-options]
+local_scheme = "setup_scm_schemes:local_scheme"
+
+[tool.hatch.build]
+packages = ["str_to_bool"]
+
+[tool.hatch.build.targets.sdist]
+packages = ["str_to_bool"]
+
 [tool.ruff]
-lint.select = ['ALL']
-lint.ignore = ['INP001', 'PLR0911', 'D203', 'D213']
-lint.fixable = ['ALL']
-lint.unfixable = []
+target-version = 'py38'
+
+[tool.ruff.lint]
+select = ['ALL']
+ignore = ['INP001', 'PLR0911', 'D203', 'D213']
+fixable = ['ALL']
+unfixable = []
 
 [tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
@@ -54,7 +64,7 @@ quote-style = 'single'
 profile = "black"
 
 [tool.pyright]
-exclude = ['typings']
+exclude = ['typings', '.venv']
 filterwarnings = 'error'
 
 [tool.pytest.ini_options]

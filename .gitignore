@@ -87,15 +87,8 @@ env/
 venv/
 ENV/
 
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
+# hatch
+str_to_bool/_version.py
 
 # mypy
 .mypy_cache/

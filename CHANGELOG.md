@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+
+- chore: migrate to uv and drop required Python version to 3.0 - closes #2
+
 ## Version 1.0.2
 
 - docs: fix usage sample in `README.md`, `from strtobool` -> `from str_to_bool`
